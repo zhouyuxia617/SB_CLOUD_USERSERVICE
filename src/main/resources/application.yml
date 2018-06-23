@@ -1,0 +1,20 @@
+#对外提供接口的调用的端口，可以认为是一个tomcat
+server:
+    port: 8888
+#设置注册中心当前主机的主机名
+eureka:
+    instance:
+        hostname: userserviceh
+        #取一个名字
+        appname: userservice
+    #注册到注册中心
+    client:
+        #要注册就把这个改为true，将自己作为一个微服务注册到注册中心，必须配一个上面那个appname:名字，默认是false不注册
+        registerWithEureka: true
+        #是否将注册中心上所有的微服务抓取到本地存储，要就改为true
+        fetchRegistry: false
+        #该地址是将来所有微服务用于注册到注册中心的地址【重要】
+        serviceUrl:
+            #这里取注册中心的yml文件中的主机名和端口
+            defaultZone: http://eurekaserver:8761/eureka/
+            
