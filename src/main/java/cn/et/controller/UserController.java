@@ -22,6 +22,10 @@ public class UserController {
 		//根据用户名获取用户
 		Map map = userMapper.queryUser(userName);
 		
+		if(map == null || map.get("password") == null) {
+			return "0";
+		}
+		
 		//通过用户获取密码
 		String pass = map.get("password").toString();
 		
